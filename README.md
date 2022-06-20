@@ -1,15 +1,25 @@
 稍微改动了一下，本人不会编程，瞎玩，改版后无需配置更改js文件，直接导入即可食用，由于斜杠导致打不开的问题也解决了。
 原作者也是国人，只是好像退坑不玩jellyfin了。
+
 运行环境：电脑系统win11，jellyfin版本：10.8.0正式版，运行在黑群晖上。油猴版本4.16.1
+
 教程来了：
+
 开始前需要设置：
 1、jellyfin媒体库所有文件夹添加共享的网络文件夹，像这样：![image](https://user-images.githubusercontent.com/64485323/174583830-e98c8253-200a-4638-815b-f56891bf7e36.png)
+
 2、下载potplayer.ps1 potplayer.reg userscript.js。
+
 3、更改potplayer.reg里的：@="powershell -File D:\\codes\\Jellyfin-Potplayer\\potplayer.ps1 %1"
+
 更改为potplayer.ps1文件的实际路径，原文说要双反斜杠，我测试单反斜杠好像也没问题。
+
 4、更改potplayer.ps1里的& "C:\\Program Files\\DAUM\\PotPlayer\\PotPlayerMini64.exe" $path
+
 更改为你的PotPlayerMini64.exe实际路径，
+
 5、双击potplayer.reg导入注册表。
+
 6、开始使用。
 说明：userscript.js文件我已经改好了，不需要任何额外的配置。不再需要将文件夹映射到本地磁盘，js脚本会直接将电影的共享文件夹路径传递给potplayer。potplayer.ps1稍微改动了一下，想办法把斜杠给去除了。如果出现powershell调用不了或者powershell一闪而过，请检查系统是否禁用脚本运行，同时检查potplayer.reg里的文件路径是否正确。win11默认禁用脚本，开启方法请百度，很简单。
 测试不论是普通文件格式mkv、MP4等等，还是原盘BDMV文件夹形势或者ISO格式都能正常打开。爽歪歪啊，jellyfin各种终端对原盘支持都不怎么好，升级到10.8.0也一样，
