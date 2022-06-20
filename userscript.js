@@ -3,7 +3,7 @@
 // @version      0.1
 // @description  play video with Potplayer
 // @author       Tccoin
-// @match        http://localhost:8096/jellyfin/web/index.html
+// @match        */web/index.html
 // ==/UserScript==
 
 (function() {
@@ -12,8 +12,7 @@
     let userid = (await ApiClient.getCurrentUser()).Id;
     ApiClient.getItem(userid, itemid).then(r => {
       if (r.Path) {
-        let path = r.Path.replace(/\\/g, '/');
-        //path = path.replace('D:', 'Z:');
+        let path = r.Path.replace(/\\/g, '\\');
         console.log(path);
         window.open('potplayer://' + path)
       } else {
